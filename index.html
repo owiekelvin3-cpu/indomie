@@ -573,8 +573,6 @@
 
     <!-- FUN CLUB CARD -->
     <div class="club-card fun-club-card">
-      <!-- Animated BG pattern -->
-      <div class="club-bg-pattern fc-pattern"></div>
 
       <!-- Top badge -->
       <div class="club-top-row">
@@ -604,7 +602,7 @@
         </div>
         <div class="club-stat-divider"></div>
         <div class="club-stat">
-          <span class="cs-num">&#127881;</span>
+          <span class="cs-num"><i class="fa-solid fa-gift"></i></span>
           <span class="cs-label">Daily Prizes</span>
         </div>
       </div>
@@ -612,25 +610,25 @@
       <!-- CTA -->
       <a href="#" class="club-cta-btn fc-cta">
         <span>BECOME A FAN</span>
-        <span class="club-cta-arrow">&#8594;</span>
+        <i class="fa-solid fa-arrow-right club-cta-arrow"></i>
       </a>
 
-      <!-- Mascot image -->
-      <div class="club-mascot">
-        <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=80"
-             alt="Happy Indomie Fun Club member" loading="lazy">
+      <!-- Mascot — CSS illustration, no external image -->
+      <div class="club-mascot club-mascot-css">
+        <div class="mascot-circle">
+          <i class="fa-solid fa-users mascot-icon"></i>
+          <span class="mascot-label">2M+ Fans</span>
+        </div>
       </div>
 
-      <!-- Floating noodle emoji -->
-      <span class="club-float-emoji cf1">&#127836;</span>
-      <span class="club-float-emoji cf2">&#10024;</span>
-      <span class="club-float-emoji cf3">&#127881;</span>
+      <!-- Floating icons — FA, no emoji -->
+      <span class="club-float-emoji cf1"><i class="fa-solid fa-bowl-food"></i></span>
+      <span class="club-float-emoji cf2"><i class="fa-solid fa-star"></i></span>
+      <span class="club-float-emoji cf3"><i class="fa-solid fa-heart"></i></span>
     </div>
 
     <!-- ICA CARD -->
     <div class="club-card ica-card">
-      <!-- Animated BG pattern -->
-      <div class="club-bg-pattern ica-pattern"></div>
 
       <!-- Top badge -->
       <div class="club-top-row">
@@ -646,29 +644,31 @@
         <p class="club-sub ica-sub">Join the team behind Nigeria's most loved brand. Grow your career with Indomie.</p>
       </div>
 
-      <!-- Perks list -->
+      <!-- Perks list — FA icons -->
       <ul class="ica-perks">
-        <li><span class="perk-icon">&#9733;</span> Competitive salary &amp; benefits</li>
-        <li><span class="perk-icon">&#9733;</span> Career growth &amp; training</li>
-        <li><span class="perk-icon">&#9733;</span> Inclusive work culture</li>
-        <li><span class="perk-icon">&#9733;</span> Pan-Nigeria opportunities</li>
+        <li><i class="fa-solid fa-circle-check perk-icon"></i> Competitive salary &amp; benefits</li>
+        <li><i class="fa-solid fa-circle-check perk-icon"></i> Career growth &amp; training</li>
+        <li><i class="fa-solid fa-circle-check perk-icon"></i> Inclusive work culture</li>
+        <li><i class="fa-solid fa-circle-check perk-icon"></i> Pan-Nigeria opportunities</li>
       </ul>
 
       <!-- CTA -->
       <a href="#" class="club-cta-btn ica-cta">
         <span>EXPLORE CAREERS</span>
-        <span class="club-cta-arrow">&#8594;</span>
+        <i class="fa-solid fa-arrow-right club-cta-arrow"></i>
       </a>
 
-      <!-- Model image -->
-      <div class="club-model">
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80"
-             alt="ICA Careers professional" loading="lazy">
+      <!-- Model — CSS illustration, no external image -->
+      <div class="club-model club-model-css">
+        <div class="model-circle">
+          <i class="fa-solid fa-briefcase model-icon"></i>
+          <span class="model-label">Join the Team</span>
+        </div>
       </div>
 
-      <!-- Floating elements -->
-      <span class="club-float-emoji ica-f1">&#128188;</span>
-      <span class="club-float-emoji ica-f2">&#9733;</span>
+      <!-- Floating icons -->
+      <span class="club-float-emoji ica-f1"><i class="fa-solid fa-briefcase"></i></span>
+      <span class="club-float-emoji ica-f2"><i class="fa-solid fa-star"></i></span>
     </div>
 
   </div>
@@ -701,26 +701,34 @@
     </div>
   </div>
 
-  <!-- Right: Masonry photo grid -->
+  <!-- Right: Masonry photo grid — CSS gradient placeholders, no external images -->
   <div class="awards-gallery">
-    <div class="ag-item ag-tall">
-      <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=80"
-           alt="Indomie award ceremony" loading="lazy">
+    <div class="ag-item ag-tall ag-grad-1">
+      <div class="ag-css-content">
+        <i class="fa-solid fa-trophy ag-icon"></i>
+        <span>Award Ceremony</span>
+      </div>
       <div class="ag-overlay"><span>Award Ceremony</span></div>
     </div>
-    <div class="ag-item">
-      <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80"
-           alt="Indomie brand event" loading="lazy">
+    <div class="ag-item ag-grad-2">
+      <div class="ag-css-content">
+        <i class="fa-solid fa-star ag-icon"></i>
+        <span>Brand Event</span>
+      </div>
       <div class="ag-overlay"><span>Brand Event</span></div>
     </div>
-    <div class="ag-item">
-      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80"
-           alt="Indomie food" loading="lazy">
+    <div class="ag-item ag-grad-3">
+      <div class="ag-css-content">
+        <i class="fa-solid fa-bowl-food ag-icon"></i>
+        <span>Food Culture</span>
+      </div>
       <div class="ag-overlay"><span>Food Culture</span></div>
     </div>
-    <div class="ag-item ag-wide">
-      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80"
-           alt="Indomie lifestyle" loading="lazy">
+    <div class="ag-item ag-wide ag-grad-4">
+      <div class="ag-css-content">
+        <i class="fa-solid fa-heart ag-icon"></i>
+        <span>Nigerian Lifestyle</span>
+      </div>
       <div class="ag-overlay"><span>Nigerian Lifestyle</span></div>
     </div>
   </div>

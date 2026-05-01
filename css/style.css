@@ -2688,3 +2688,147 @@ img, video {
   body { overflow: visible !important; }
   #hero { min-height: auto; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   PERFORMANCE — CLUBS & AWARDS SECTION OVERHAUL
+   ═══════════════════════════════════════════════════════ */
+
+/* content-visibility: auto — skip rendering off-screen sections */
+.clubs-section,
+.awards-section,
+#recipes,
+#videos,
+#funclub,
+#footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+/* Remove the heavy animated background pattern entirely */
+.club-bg-pattern { display: none !important; }
+
+/* Remove the continuous trophy ring animation — replace with one-shot on scroll */
+.awards-trophy-ring {
+  animation: none !important;
+}
+/* Re-add as a one-shot triggered by JS class */
+.awards-trophy-ring.animate {
+  animation: trophyRingOnce 1.8s ease-out forwards !important;
+}
+.awards-trophy-ring.r2.animate {
+  animation: trophyRingOnce 1.8s ease-out 0.6s forwards !important;
+}
+@keyframes trophyRingOnce {
+  0%   { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── CSS mascot/model replacements (no external images) ── */
+.club-mascot-css,
+.club-model-css {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 220px; height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.mascot-circle,
+.model-circle {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px;
+  border: 3px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease;
+}
+.club-card:hover .mascot-circle,
+.club-card:hover .model-circle {
+  transform: scale(1.06);
+}
+.mascot-icon,
+.model-icon {
+  font-size: 48px;
+  color: rgba(255,255,255,0.9);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+.mascot-label,
+.model-label {
+  font-family: var(--font-main);
+  font-size: 11px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+}
+
+/* Floating FA icons — lighter than emoji */
+.club-float-emoji {
+  position: absolute; z-index: 1;
+  font-size: 22px; opacity: 0.15;
+  /* Use transform-based animation — GPU composited */
+  animation: clubFloatGPU 6s ease-in-out infinite;
+  pointer-events: none;
+  color: rgba(255,255,255,0.8);
+  will-change: transform;
+}
+/* GPU-only animation — only transform, no layout/paint */
+@keyframes clubFloatGPU {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(8deg); }
+}
+.cf1 { bottom: 230px; right: 240px; animation-delay: 0s;   font-size: 28px; }
+.cf2 { top: 28%;      right: 14%;   animation-delay: 1.2s; font-size: 18px; }
+.cf3 { bottom: 250px; right: 160px; animation-delay: 2.4s; font-size: 22px; }
+.ica-f1 { bottom: 230px; right: 240px; animation-delay: 0.6s; font-size: 24px; }
+.ica-f2 { top: 32%;      right: 12%;   animation-delay: 1.8s; font-size: 16px; }
+
+/* Perk icon — FA */
+.perk-icon {
+  color: var(--yellow);
+  font-size: 13px;
+  flex-shrink: 0;
+  width: 16px;
+}
+
+/* ── CSS gradient gallery items (no external images) ── */
+.ag-grad-1 { background: linear-gradient(135deg, #c0392b 0%, #8e1a0e 100%); }
+.ag-grad-2 { background: linear-gradient(135deg, #e67e22 0%, #c0392b 100%); }
+.ag-grad-3 { background: linear-gradient(135deg, #27ae60 0%, #1a5c35 100%); }
+.ag-grad-4 { background: linear-gradient(135deg, #2c3e50 0%, #c0392b 100%); }
+
+.ag-css-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+  padding: 16px;
+}
+.ag-icon {
+  font-size: 40px;
+  color: rgba(255,255,255,0.5);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+.ag-css-content span {
+  font-family: var(--font-main);
+  font-size: 12px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+/* Hover reveals overlay cleanly */
+.ag-item:hover .ag-css-content { opacity: 0; }
+.ag-item:hover .ag-overlay { opacity: 1; }
+
+/* ── Section label performance ── */
+.clubs-section-label {
+  /* Avoid layout recalc on scroll */
+  contain: layout style;
+}
+
+/* ── Reduce animation on low-power devices ── */
+@media (prefers-reduced-motion: reduce) {
+  .club-float-emoji { animation: none !important; }
+  .awards-trophy-ring { animation: none !important; }
+  .club-bg-pattern { display: none !important; }
+}
