@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indomie Nigeria — Taste the Culture. Feel the Energy.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="is-loading">
+
+<!-- ══════════════════════════════════════
+     CUSTOM CURSOR — Indomie Logo
+     ══════════════════════════════════════ -->
+<div id="indomie-cursor" aria-hidden="true">
+  <div class="cursor-logo-wrap">
+    <img src="logo.png" alt="" class="cursor-logo-img" id="cursor-logo-img">
+    <div class="cursor-shadow"></div>
+  </div>
+</div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE ENTRANCE — PRELOADER / INTRO SCREEN
+     ═══════════════════════════════════════════════════ -->
+<div id="page-intro" aria-hidden="true">
+  <!-- Red curtain panels that split open -->
+  <div class="intro-panel intro-panel-left"></div>
+  <div class="intro-panel intro-panel-right"></div>
+
+  <!-- Center logo reveal -->
+  <div class="intro-center">
+    <div class="intro-logo-wrap">
+      <img src="logo.png" alt="Indomie Nigeria" class="intro-logo" id="intro-logo">
+    </div>
+    <!-- Animated tagline -->
+    <div class="intro-tagline" id="intro-tagline">
+      <span class="it-word">Taste</span>
+      <span class="it-word">the</span>
+      <span class="it-word it-culture">Culture.</span>
+    </div>
+    <!-- Loading bar -->
+    <div class="intro-bar-wrap">
+      <div class="intro-bar" id="intro-bar"></div>
+    </div>
+    <span class="intro-pct" id="intro-pct">0%</span>
+  </div>
+
+  <!-- Noodle particles -->
+  <div class="intro-particles" id="intro-particles">
+    <span class="ip ip1">&#127836;</span>
+    <span class="ip ip2">&#10024;</span>
+    <span class="ip ip3">&#127836;</span>
+    <span class="ip ip4">&#128293;</span>
+    <span class="ip ip5">&#127836;</span>
+    <span class="ip ip6">&#10024;</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE OUTRO — TRANSITION OVERLAY (link clicks)
+     ═══════════════════════════════════════════════════ -->
+<div id="page-outro" aria-hidden="true">
+  <div class="outro-panel outro-top"></div>
+  <div class="outro-panel outro-bottom"></div>
+  <div class="outro-logo">
+    <img src="logo.png" alt="Indomie Nigeria">
+  </div>
+</div>
+
+<!-- NAVBAR — CLEAN, BEAUTIFUL, FULLY WORKING -->
+<nav id="navbar">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="#" class="nav-logo" aria-label="Indomie Nigeria Home">
+      <img src="logo.png" alt="Indomie Nigeria" class="nav-logo-img">
+    </a>
+
+    <!-- Desktop nav links — only working sections -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link">
+        <i class="fa-solid fa-circle-info nav-link-icon"></i>About
+      </a></li>
+      <li><a href="#products" class="nav-link">
+        <i class="fa-solid fa-bowl-food nav-link-icon"></i>Products
+      </a></li>
+      <li><a href="#recipes" class="nav-link">
+        <i class="fa-solid fa-utensils nav-link-icon"></i>Recipes
+      </a></li>
+      <li><a href="#videos" class="nav-link">
+        <i class="fa-solid fa-play nav-link-icon"></i>Videos
+      </a></li>
+      <li><a href="#funclub" class="nav-link">
+        <i class="fa-solid fa-star nav-link-icon"></i>Fun Club
+      </a></li>
+      <li><a href="#footer" class="nav-link">
+        <i class="fa-solid fa-envelope nav-link-icon"></i>Contact
+      </a></li>
+    </ul>
+
+    <!-- Right actions -->
+    <div class="nav-actions">
+      <!-- Search toggle -->
+      <button class="nav-icon-btn" id="nav-search-btn" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <!-- Dark mode -->
+      <button class="nav-icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+      </button>
+      <!-- Find a store CTA -->
+      <a href="#footer" class="nav-cta-pill">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Find a Store</span>
+      </a>
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Search bar (slides down) -->
+  <div class="nav-search-bar" id="nav-search-bar">
+    <div class="nav-search-inner">
+      <i class="fa-solid fa-magnifying-glass nav-search-icon"></i>
+      <input type="search" placeholder="Search flavours, recipes, videos…" class="nav-search-input" id="nav-search-input" aria-label="Search">
+      <button class="nav-search-close" id="nav-search-close" aria-label="Close search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mm-inner">
+    <ul class="mm-links">
+      <li><a href="#about"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+      <li><a href="#products"><i class="fa-solid fa-bowl-food"></i> Products</a></li>
+      <li><a href="#recipes"><i class="fa-solid fa-utensils"></i> Recipes</a></li>
+      <li><a href="#videos"><i class="fa-solid fa-play"></i> Videos</a></li>
+      <li><a href="#funclub"><i class="fa-solid fa-star"></i> Fun Club</a></li>
+      <li><a href="#footer"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="mm-footer">
+      <div class="mm-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <p class="mm-tagline">Nigeria's No.1 Since 1988</p>
+    </div>
+  </div>
+</div>
+
+<!-- HERO BANNER -->
+<section id="hero">
+  <div class="hero-slides">
+
+    <!-- SLIDE 1 — Show Some Love video -->
+    <div class="hero-slide active">
+      <div class="hero-video-bg">
+        <video autoplay muted loop playsinline preload="auto" class="hero-vid" id="hero-vid-1">
+          <source src="video/Show Some Love With Indomie_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-vid-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-text-block">
+            <h1 class="hero-headline">
+              <span class="show-word">Show</span>
+              <span class="some-word">some</span>
+              <span class="love-word">L<span class="love-heart">&#10084;</span>ve</span>
+            </h1>
+          </div>
+          <div class="hero-ctas-row">
+            <a href="#products" class="hero-cta-btn">Explore Flavours</a>
+            <a href="#videos" class="hero-cta-btn hero-cta-ghost">
+              <span class="play-circle">&#9654;</span> Watch Videos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — Ramadan video -->
+    <div class="hero-slide">
+      <div class="hero-video-bg">
+        <video muted loop playsinline preload="none" class="hero-vid" id="hero-vid-2">
+          <source src="video/Show Some Love this Ramadan with Indomie_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-vid-overlay"></div>
+      </div>
+      <div class="hero-content hero-content-2">
+        <div class="hero-text-center">
+          <h1>Taste the <span class="yellow-text">Culture</span></h1>
+          <p>Nigeria's favourite noodles — in every home, every city</p>
+          <a href="#products" class="hero-cta-btn">Explore Flavours</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Video mute toggle -->
+  <button class="hero-mute-btn" id="hero-mute-btn" aria-label="Toggle mute">
+    <span id="mute-icon">&#128264;</span>
+  </button>
+
+  <div class="hero-dots">
+    <button class="hdot active" data-s="0"></button>
+    <button class="hdot" data-s="1"></button>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section id="about" class="about-strip">
+  <div class="about-inner">
+    <div class="about-text" data-anim="fade-right">
+      <p class="discover-label" data-anim="fade-up" data-delay="0">DISCOVER THE UNIQUE TASTE OF</p>
+      <h2 class="about-title" data-anim="fade-up" data-delay="0.1">INDOMIE INSTANT NOODLES</h2>
+      <p class="about-desc" data-anim="fade-up" data-delay="0.2">Indomie is a unique brand of Instant Noodles, loved by a majority of Nigerians. It has grown to become a household name in Nigeria owing to its delightful taste and wholesomeness. Transcending across all age groups, the brand has managed to win over the hearts and taste palates of both the young and the old.</p>
+      <a href="#products" class="about-btn" data-anim="fade-up" data-delay="0.3">SEE ALL PRODUCTS</a>
+    </div>
+    <div class="about-img" data-anim="fade-left">
+      <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80" alt="Indomie noodles bowl with toppings" loading="lazy">
+      <div class="about-float-img">
+        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&q=80" alt="Indomie ingredients" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section id="products" class="products-section">
+  <div class="products-tabs" data-anim="fade-up">
+    <button class="ptab active" data-flavor="chicken">CHICKEN</button>
+    <button class="ptab" data-flavor="onion">ONION</button>
+    <button class="ptab" data-flavor="pepper">PEPPER SOUP</button>
+    <button class="ptab" data-flavor="jollof">JOLLOF</button>
+    <button class="ptab" data-flavor="oriental">ORIENTAL</button>
+  </div>
+
+  <div class="products-showcase">
+    <div class="product-display" id="product-display">
+
+      <!-- CHICKEN -->
+      <div class="product-panel active" data-flavor="chicken">
+        <div class="product-panel-inner">
+          <div class="product-pack-img" data-anim="zoom-in" data-delay="0">
+            <div class="pack-badge">The<br><em>Indomitables</em><br>Pack</div>
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=320&q=80" alt="Indomie Chicken Pack" loading="lazy" class="pack-main-img">
+            <div class="pack-bowl">
+              <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=280&q=80" alt="Chicken noodles bowl" loading="lazy">
+            </div>
+          </div>
+          <div class="product-info-block">
+            <h2 class="product-name">CHICKEN<span class="flavor-sub"> FLAVOR</span></h2>
+            <p class="flavor-french">Goût Poulet</p>
+            <p class="product-desc">The original legend. Warm, savoury broth with tender noodles — the taste that started it all in Nigeria since 1988.</p>
+            <div class="product-range-list">
+              <p class="range-title">INDOMITABLES <span class="range-arrow">&#9654;</span></p>
+              <ul>
+                <li class="active-range">STANDARD PACK</li>
+                <li>SUPER PACK</li>
+                <li>HUNGRYMAN</li>
+                <li>BELLEFULL</li>
+                <li>RELISH</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-single-pack">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=160&q=80" alt="Indomie single pack" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- ONION -->
+      <div class="product-panel" data-flavor="onion">
+        <div class="product-panel-inner">
+          <div class="product-pack-img">
+            <div class="pack-badge onion-badge">Onion<br><em>Chicken</em></div>
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=320&q=80" alt="Indomie Onion Chicken Pack" loading="lazy" class="pack-main-img">
+            <div class="pack-bowl">
+              <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=280&q=80" alt="Onion chicken noodles" loading="lazy">
+            </div>
+          </div>
+          <div class="product-info-block">
+            <h2 class="product-name">ONION<span class="flavor-sub"> CHICKEN</span></h2>
+            <p class="flavor-french">Poulet à l'Oignon</p>
+            <p class="product-desc">Rich chicken broth kissed with caramelised onion. A deeper, bolder take on the classic Nigerian favourite.</p>
+            <div class="product-range-list">
+              <p class="range-title">INDOMITABLES <span class="range-arrow">&#9654;</span></p>
+              <ul>
+                <li class="active-range">STANDARD PACK</li>
+                <li>SUPER PACK</li>
+                <li>HUNGRYMAN</li>
+                <li>BELLEFULL</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-single-pack">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=160&q=80" alt="Indomie onion pack" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- PEPPER SOUP -->
+      <div class="product-panel" data-flavor="pepper">
+        <div class="product-panel-inner">
+          <div class="product-pack-img">
+            <div class="pack-badge pepper-badge">Pepper<br><em>Soup</em></div>
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=320&q=80" alt="Indomie Pepper Soup Pack" loading="lazy" class="pack-main-img">
+            <div class="pack-bowl">
+              <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=280&q=80" alt="Pepper soup noodles" loading="lazy">
+            </div>
+          </div>
+          <div class="product-info-block">
+            <h2 class="product-name">CHICKEN<span class="flavor-sub"> PEPPER SOUP</span></h2>
+            <p class="flavor-french">Soupe au Poivre</p>
+            <p class="product-desc">Bold Nigerian pepper soup spices in every strand. Heat, depth, and pure street-food soul in every bite.</p>
+            <div class="product-range-list">
+              <p class="range-title">INDOMITABLES <span class="range-arrow">&#9654;</span></p>
+              <ul>
+                <li class="active-range">SUPER PACK</li>
+                <li>HUNGRYMAN</li>
+                <li>BELLEFULL</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-single-pack">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=160&q=80" alt="Indomie pepper soup pack" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- JOLLOF -->
+      <div class="product-panel" data-flavor="jollof">
+        <div class="product-panel-inner">
+          <div class="product-pack-img">
+            <div class="pack-badge jollof-badge">Jollof<br><em>Flavour</em></div>
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=320&q=80" alt="Indomie Jollof Pack" loading="lazy" class="pack-main-img">
+            <div class="pack-bowl">
+              <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=280&q=80" alt="Jollof noodles" loading="lazy">
+            </div>
+          </div>
+          <div class="product-info-block">
+            <h2 class="product-name">JOLLOF<span class="flavor-sub"> FLAVOUR</span></h2>
+            <p class="flavor-french">Saveur Jollof</p>
+            <p class="product-desc">Inspired by Nigeria's most celebrated dish. Smoky, tomato-rich, and unmistakably festive in every pack.</p>
+            <div class="product-range-list">
+              <p class="range-title">INDOMITABLES <span class="range-arrow">&#9654;</span></p>
+              <ul>
+                <li class="active-range">STANDARD PACK</li>
+                <li>SUPER PACK</li>
+                <li>HUNGRYMAN</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-single-pack">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=160&q=80" alt="Indomie jollof pack" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- ORIENTAL -->
+      <div class="product-panel" data-flavor="oriental">
+        <div class="product-panel-inner">
+          <div class="product-pack-img">
+            <div class="pack-badge oriental-badge">Oriental<br><em>Fried</em></div>
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=320&q=80" alt="Indomie Oriental Pack" loading="lazy" class="pack-main-img">
+            <div class="pack-bowl">
+              <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=280&q=80" alt="Oriental fried noodles" loading="lazy">
+            </div>
+          </div>
+          <div class="product-info-block">
+            <h2 class="product-name">ORIENTAL<span class="flavor-sub"> FRIED</span></h2>
+            <p class="flavor-french">Nouilles Frites Orientales</p>
+            <p class="product-desc">Dry-style fried noodles with a rich, savoury seasoning blend. A bold departure from the classic soup style.</p>
+            <div class="product-range-list">
+              <p class="range-title">INDOMITABLES <span class="range-arrow">&#9654;</span></p>
+              <ul>
+                <li class="active-range">STANDARD PACK</li>
+                <li>SUPER PACK</li>
+                <li>RELISH</li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-single-pack">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=160&q=80" alt="Indomie oriental pack" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES SECTION -->
+<section id="recipes" class="recipes-section">
+  <div class="recipes-inner">
+    <div class="recipes-header">
+      <div class="recipes-title-block">
+        <h2>Indomie<br><span class="recipes-big">Recipes</span></h2>
+      </div>
+      <div class="recipes-chef-img">
+        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80" alt="Chef preparing Indomie recipes" loading="lazy">
+      </div>
+      <div class="recipes-float-noodles">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=300&q=80" alt="Noodles" loading="lazy">
+      </div>
+    </div>
+    <div class="recipes-grid">
+      <div class="recipe-card" data-recipe="0">
+        <div class="recipe-img">
+          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=300&q=80" alt="Spicy Egg Indomie" loading="lazy">
+          <div class="recipe-overlay"><span>View Recipe</span></div>
+        </div>
+        <div class="recipe-caption">
+          <h4>Spicy Egg Indomie</h4>
+          <span>10 min &bull; Quick</span>
+        </div>
+      </div>
+      <div class="recipe-card" data-recipe="1">
+        <div class="recipe-img">
+          <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300&q=80" alt="Indomie Stir-Fry" loading="lazy">
+          <div class="recipe-overlay"><span>View Recipe</span></div>
+        </div>
+        <div class="recipe-caption">
+          <h4>Indomie Stir-Fry</h4>
+          <span>20 min &bull; Family</span>
+        </div>
+      </div>
+      <div class="recipe-card" data-recipe="2">
+        <div class="recipe-img">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=80" alt="Indomie Frittata" loading="lazy">
+          <div class="recipe-overlay"><span>View Recipe</span></div>
+        </div>
+        <div class="recipe-caption">
+          <h4>Indomie Frittata</h4>
+          <span>15 min &bull; Creative</span>
+        </div>
+      </div>
+      <div class="recipe-card" data-recipe="3">
+        <div class="recipe-img">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&q=80" alt="Pepper Soup Noodles" loading="lazy">
+          <div class="recipe-overlay"><span>View Recipe</span></div>
+        </div>
+        <div class="recipe-caption">
+          <h4>Pepper Soup Noodles</h4>
+          <span>25 min &bull; Spicy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS SECTION — FULLSCREEN SLIDER -->
+<section id="videos" class="vs-section">
+
+  <!-- Slider track -->
+  <div class="vs-slider" id="vs-slider">
+
+    <!-- Slide 1 -->
+    <div class="vs-slide active" data-index="0">
+      <video class="vs-bg-vid" muted loop playsinline preload="auto" id="vs-vid-0">
+        <source src="video/Show Some Love With Indomie_1080p.mp4" type="video/mp4">
+      </video>
+      <div class="vs-slide-overlay"></div>
+      <div class="vs-slide-content">
+        <span class="vs-slide-tag">Campaign</span>
+        <h2 class="vs-slide-title">Show Some Love<br>With Indomie</h2>
+        <button class="vs-watch-btn" data-index="0">
+          <span class="vs-watch-icon">&#9654;</span> Watch Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="vs-slide" data-index="1">
+      <video class="vs-bg-vid" muted loop playsinline preload="none" id="vs-vid-1">
+        <source src="video/Show Some Love this Ramadan with Indomie_1080p.mp4" type="video/mp4">
+      </video>
+      <div class="vs-slide-overlay"></div>
+      <div class="vs-slide-content">
+        <span class="vs-slide-tag">Ramadan Special</span>
+        <h2 class="vs-slide-title">Show Some Love<br>This Ramadan</h2>
+        <button class="vs-watch-btn" data-index="1">
+          <span class="vs-watch-icon">&#9654;</span> Watch Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="vs-slide" data-index="2">
+      <video class="vs-bg-vid" muted loop playsinline preload="none" id="vs-vid-2">
+        <source src="video/indomie-brand-story_720p.mp4" type="video/mp4">
+      </video>
+      <div class="vs-slide-overlay"></div>
+      <div class="vs-slide-content">
+        <span class="vs-slide-tag">Brand Film</span>
+        <h2 class="vs-slide-title">Indomie Nigeria<br>Brand Story</h2>
+        <button class="vs-watch-btn" data-index="2">
+          <span class="vs-watch-icon">&#9654;</span> Watch Now
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prev / Next arrows -->
+  <button class="vs-arrow vs-prev" id="vs-prev" aria-label="Previous video">&#10094;</button>
+  <button class="vs-arrow vs-next" id="vs-next" aria-label="Next video">&#10095;</button>
+
+  <!-- Mute toggle -->
+  <button class="vs-mute-btn" id="vs-mute-btn" aria-label="Toggle mute">
+    <span id="vs-mute-icon">&#128264;</span>
+  </button>
+
+  <!-- Progress dots + counter -->
+  <div class="vs-controls-bar">
+    <div class="vs-dots">
+      <button class="vs-dot active" data-index="0" aria-label="Video 1"></button>
+      <button class="vs-dot" data-index="1" aria-label="Video 2"></button>
+      <button class="vs-dot" data-index="2" aria-label="Video 3"></button>
+    </div>
+    <div class="vs-counter">
+      <span id="vs-cur">01</span>
+      <span class="vs-sep">—</span>
+      <span class="vs-total">03</span>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="vs-progress-bar">
+    <div class="vs-progress-fill" id="vs-progress-fill"></div>
+  </div>
+
+  <!-- Lightbox modal for full playback with sound -->
+  <div class="vs-lightbox" id="vs-lightbox">
+    <div class="vs-lb-backdrop" id="vs-lb-backdrop"></div>
+    <div class="vs-lb-inner">
+      <button class="vs-lb-close" id="vs-lb-close" aria-label="Close">&#10005;</button>
+      <video id="vs-lb-video" class="vs-lb-vid" controls playsinline>
+        <source id="vs-lb-src" src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+</section>
+
+<!-- FUN CLUB + ICA — IMMERSIVE REDESIGN -->
+<section id="funclub" class="clubs-section">
+
+  <!-- Section label -->
+  <div class="clubs-label-row">
+    <span class="clubs-section-label">Community &amp; Careers</span>
+  </div>
+
+  <div class="clubs-inner">
+
+    <!-- FUN CLUB CARD -->
+    <div class="club-card fun-club-card">
+      <!-- Animated BG pattern -->
+      <div class="club-bg-pattern fc-pattern"></div>
+
+      <!-- Top badge -->
+      <div class="club-top-row">
+        <div class="fun-club-badge">
+          <span class="fc-fun">FUN</span>
+          <span class="fc-club">CLUB</span>
+        </div>
+        <div class="club-year-tag">Est. 1988</div>
+      </div>
+
+      <!-- Big headline -->
+      <div class="club-headline-block">
+        <h2 class="club-headline">Join the<br><span class="club-hl-accent">Indomitables</span></h2>
+        <p class="club-sub">Be part of Nigeria's biggest noodle family. Games, prizes, and good vibes — every day.</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="club-stats">
+        <div class="club-stat">
+          <span class="cs-num">2M+</span>
+          <span class="cs-label">Members</span>
+        </div>
+        <div class="club-stat-divider"></div>
+        <div class="club-stat">
+          <span class="cs-num">35+</span>
+          <span class="cs-label">Years Strong</span>
+        </div>
+        <div class="club-stat-divider"></div>
+        <div class="club-stat">
+          <span class="cs-num">&#127881;</span>
+          <span class="cs-label">Daily Prizes</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="#" class="club-cta-btn fc-cta">
+        <span>BECOME A FAN</span>
+        <span class="club-cta-arrow">&#8594;</span>
+      </a>
+
+      <!-- Mascot image -->
+      <div class="club-mascot">
+        <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=80"
+             alt="Happy Indomie Fun Club member" loading="lazy">
+      </div>
+
+      <!-- Floating noodle emoji -->
+      <span class="club-float-emoji cf1">&#127836;</span>
+      <span class="club-float-emoji cf2">&#10024;</span>
+      <span class="club-float-emoji cf3">&#127881;</span>
+    </div>
+
+    <!-- ICA CARD -->
+    <div class="club-card ica-card">
+      <!-- Animated BG pattern -->
+      <div class="club-bg-pattern ica-pattern"></div>
+
+      <!-- Top badge -->
+      <div class="club-top-row">
+        <div class="ica-badge">
+          <span class="ica-text">ICA</span>
+        </div>
+        <div class="club-year-tag ica-year">Careers</div>
+      </div>
+
+      <!-- Big headline -->
+      <div class="club-headline-block">
+        <h2 class="club-headline ica-headline">Build Your<br><span class="club-hl-accent ica-accent">Future Here</span></h2>
+        <p class="club-sub ica-sub">Join the team behind Nigeria's most loved brand. Grow your career with Indomie.</p>
+      </div>
+
+      <!-- Perks list -->
+      <ul class="ica-perks">
+        <li><span class="perk-icon">&#9733;</span> Competitive salary &amp; benefits</li>
+        <li><span class="perk-icon">&#9733;</span> Career growth &amp; training</li>
+        <li><span class="perk-icon">&#9733;</span> Inclusive work culture</li>
+        <li><span class="perk-icon">&#9733;</span> Pan-Nigeria opportunities</li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="#" class="club-cta-btn ica-cta">
+        <span>EXPLORE CAREERS</span>
+        <span class="club-cta-arrow">&#8594;</span>
+      </a>
+
+      <!-- Model image -->
+      <div class="club-model">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80"
+             alt="ICA Careers professional" loading="lazy">
+      </div>
+
+      <!-- Floating elements -->
+      <span class="club-float-emoji ica-f1">&#128188;</span>
+      <span class="club-float-emoji ica-f2">&#9733;</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS & GALLERY — FULL REDESIGN -->
+<section class="awards-section">
+
+  <!-- Left: Award statement -->
+  <div class="awards-left">
+    <div class="awards-trophy-wrap">
+      <div class="awards-trophy-ring"></div>
+      <div class="awards-trophy-ring r2"></div>
+      <span class="awards-trophy-icon">&#127942;</span>
+    </div>
+    <div class="awards-text">
+      <span class="awards-eyebrow">Recognised Excellence</span>
+      <h2 class="awards-headline">Nigeria's<br>Most Awarded<br><span class="awards-hl-red">Noodle Brand</span></h2>
+      <p class="awards-desc">Over three decades of awards, recognition, and the trust of millions of Nigerian families.</p>
+      <div class="awards-count-row">
+        <div class="awards-count-item">
+          <span class="ac-num" data-count="50">0</span><span class="ac-plus">+</span>
+          <span class="ac-label">Awards Won</span>
+        </div>
+        <div class="awards-count-item">
+          <span class="ac-num" data-count="35">0</span><span class="ac-plus">+</span>
+          <span class="ac-label">Years of Trust</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Masonry photo grid -->
+  <div class="awards-gallery">
+    <div class="ag-item ag-tall">
+      <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=80"
+           alt="Indomie award ceremony" loading="lazy">
+      <div class="ag-overlay"><span>Award Ceremony</span></div>
+    </div>
+    <div class="ag-item">
+      <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80"
+           alt="Indomie brand event" loading="lazy">
+      <div class="ag-overlay"><span>Brand Event</span></div>
+    </div>
+    <div class="ag-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80"
+           alt="Indomie food" loading="lazy">
+      <div class="ag-overlay"><span>Food Culture</span></div>
+    </div>
+    <div class="ag-item ag-wide">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80"
+           alt="Indomie lifestyle" loading="lazy">
+      <div class="ag-overlay"><span>Nigerian Lifestyle</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- RECIPE MODAL -->
+<div class="recipe-modal" id="recipe-modal">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close">&#10005;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- FOOTER — FULL REDESIGN -->
+<footer id="footer">
+
+  <!-- Top wave divider -->
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#1a1a1a"/>
+    </svg>
+  </div>
+
+  <div class="footer-body">
+
+    <!-- Brand column -->
+    <div class="footer-brand-col">
+      <img src="logo.png" alt="Indomie Nigeria" class="footer-logo-img">
+      <p class="footer-brand-desc">Nigeria's favourite instant noodles since 1988. Made with love, served with culture — in every home, every city.</p>
+      <!-- Social icons — redesigned -->
+      <div class="footer-socials">
+        <a href="#" class="fsoc-new" aria-label="Facebook">
+          <span class="fsoc-icon"><i class="fa-brands fa-facebook-f"></i></span>
+          <span class="fsoc-label">Facebook</span>
+        </a>
+        <a href="#" class="fsoc-new" aria-label="Twitter / X">
+          <span class="fsoc-icon"><i class="fa-brands fa-x-twitter"></i></span>
+          <span class="fsoc-label">Twitter / X</span>
+        </a>
+        <a href="#" class="fsoc-new" aria-label="Instagram">
+          <span class="fsoc-icon"><i class="fa-brands fa-instagram"></i></span>
+          <span class="fsoc-label">Instagram</span>
+        </a>
+        <a href="#" class="fsoc-new" aria-label="YouTube">
+          <span class="fsoc-icon"><i class="fa-brands fa-youtube"></i></span>
+          <span class="fsoc-label">YouTube</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick links -->
+    <div class="footer-links-col">
+      <h4 class="footer-col-title">Quick Links</h4>
+      <ul class="footer-link-list">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Our Range</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#funclub">Fun Club</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-contact-col-new">
+      <h4 class="footer-col-title">Get In Touch</h4>
+      <ul class="footer-contact-list">
+        <li>
+          <span class="fci"><i class="fa-solid fa-location-dot"></i></span>
+          <span>14 Idowu Martins Street,<br>Off Eric Moore Road,<br>Surulere, Lagos, Nigeria</span>
+        </li>
+        <li>
+          <span class="fci"><i class="fa-solid fa-envelope"></i></span>
+          <a href="mailto:info@dufil.ng">info@dufil.ng</a>
+        </li>
+        <li>
+          <span class="fci"><i class="fa-solid fa-phone"></i></span>
+          <span>08033864422 &bull; 07080863863</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Newsletter — redesigned -->
+    <div class="footer-nl-col">
+      <h4 class="footer-col-title">Stay Updated</h4>
+      <p class="footer-nl-desc">New flavours, recipes &amp; surprises — straight to your inbox.</p>
+      <form class="nl-form-new" onsubmit="return false;" id="nl-form-new">
+        <div class="nl-input-wrap">
+          <input type="email" placeholder="your@email.com" class="nl-input-new" aria-label="Email address" required>
+          <button type="submit" class="nl-btn-new" aria-label="Subscribe">
+            <span class="nl-btn-text">GO</span>
+            <span class="nl-btn-arrow">&#8594;</span>
+          </button>
+        </div>
+        <label class="nl-check-new">
+          <input type="checkbox" required>
+          <span>I agree to the <a href="#">terms &amp; conditions</a></span>
+        </label>
+        <div class="nl-success" id="nl-success">
+          <span>&#10003;</span> You're in! Welcome to the family.
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom-bar">
+    <div class="footer-bottom-inner">
+      <p>&copy; 2024 Dufil Prima Foods Plc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <span>|</span>
+        <a href="#">Terms of Use</a>
+        <span>|</span>
+        <a href="#">Cookie Policy</a>
+      </div>
+      <p class="footer-made">Made with &#10084; in Nigeria</p>
+    </div>
+  </div>
+
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>
