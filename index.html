@@ -573,131 +573,105 @@
 
 </section>
 
-<!-- FUN CLUB + ICA — PREMIUM REDESIGN WITH FAMILY VIDEOS -->
+<!-- FUN CLUB + ICA -->
 <section id="funclub" class="clubs-section">
 
-  <!-- ── FUN CLUB — full-width immersive block ── -->
+  <!-- FUN CLUB -->
   <div class="fc-block">
 
-    <!-- Background video carousel — 3 African family videos -->
+    <!-- Background video carousel -->
     <div class="fc-video-bg">
-      <!-- Local family videos — drop family-1.mp4, family-2.mp4, family-3.mp4 into /video folder -->
       <video class="fc-vid fc-vid-active" autoplay muted loop playsinline preload="auto" id="fc-vid-0">
-        <source src="video/family-1.mp4" type="video/mp4">
+        <source src="family video/Get ready for episode 15 of Indomie Fan Club House_720p.mp4" type="video/mp4">
       </video>
       <video class="fc-vid" muted loop playsinline preload="none" id="fc-vid-1">
-        <source src="video/family-2.mp4" type="video/mp4">
+        <source src="family video/Indomie Flavors_720p.mp4" type="video/mp4">
       </video>
       <video class="fc-vid" muted loop playsinline preload="none" id="fc-vid-2">
-        <source src="video/family-3.mp4" type="video/mp4">
+        <source src="family video/Kalli labarin Indomie na Binta_720p (1).mp4" type="video/mp4">
       </video>
-
-      <!-- Animated CSS background — always visible, looks great even without videos -->
-      <div class="fc-animated-bg">
-        <div class="fc-bg-orb fc-orb-1"></div>
-        <div class="fc-bg-orb fc-orb-2"></div>
-        <div class="fc-bg-orb fc-orb-3"></div>
-        <div class="fc-bg-grid"></div>
-        <div class="fc-silhouette fs-1">&#128106;</div>
-        <div class="fc-silhouette fs-2">&#128102;</div>
-        <div class="fc-silhouette fs-3">&#128103;</div>
-        <div class="fc-silhouette fs-4">&#128105;</div>
-        <div class="fc-silhouette fs-5">&#128104;</div>
-        <div class="fc-silhouette fs-6">&#128106;</div>
-      </div>
-
-      <!-- Dark gradient overlay -->
+      <!-- Solid red fallback if videos fail -->
+      <div class="fc-bg-fallback"></div>
+      <!-- Overlay for text readability -->
       <div class="fc-overlay"></div>
     </div>
 
-    <!-- Video switcher dots -->
-    <div class="fc-vid-dots">
-      <button class="fc-vdot active" data-fv="0" aria-label="Family video 1"></button>
-      <button class="fc-vdot" data-fv="1" aria-label="Family video 2"></button>
-      <button class="fc-vdot" data-fv="2" aria-label="Family video 3"></button>
-    </div>
-
-    <!-- Content over video -->
+    <!-- Content -->
     <div class="fc-content">
+      <div class="fc-inner">
 
-      <!-- Left: brand + info -->
-      <div class="fc-left">
-        <div class="fc-badge-wrap">
+        <!-- Fun Club logo badge -->
+        <div class="fc-logo-badge">
           <div class="fun-club-badge">
             <span class="fc-fun">FUN</span>
             <span class="fc-club">CLUB</span>
           </div>
-          <span class="fc-est">Est. 1988</span>
         </div>
 
-        <h2 class="fc-headline">
-          Nigeria's<br>
-          <span class="fc-hl-yellow">Biggest</span><br>
-          Noodle Family
-        </h2>
-        <p class="fc-desc">Join millions of Indomie lovers across Nigeria. Games, prizes, exclusive content, and good vibes — every single day.</p>
+        <h2 class="fc-headline">The Indomie<br><span class="fc-hl-yellow">Fun Club</span></h2>
+        <p class="fc-desc">Join Nigeria's biggest noodle family. Games, prizes, and good vibes — every day.</p>
 
-        <!-- Stats -->
-        <div class="fc-stats">
-          <div class="fc-stat">
-            <span class="fc-stat-num">2M+</span>
-            <span class="fc-stat-label">Members</span>
-          </div>
-          <div class="fc-stat-line"></div>
-          <div class="fc-stat">
-            <span class="fc-stat-num">35+</span>
-            <span class="fc-stat-label">Years Strong</span>
-          </div>
-          <div class="fc-stat-line"></div>
-          <div class="fc-stat">
-            <span class="fc-stat-num">&#127873;</span>
-            <span class="fc-stat-label">Daily Prizes</span>
-          </div>
+        <a href="#" class="fc-cta-btn">BECOME A FAN</a>
+
+        <!-- Video dots -->
+        <div class="fc-vid-dots">
+          <button class="fc-vdot active" data-fv="0" aria-label="Video 1"></button>
+          <button class="fc-vdot" data-fv="1" aria-label="Video 2"></button>
+          <button class="fc-vdot" data-fv="2" aria-label="Video 3"></button>
         </div>
 
-        <a href="#" class="fc-cta-btn">
-          <i class="fa-solid fa-users"></i>
-          <span>BECOME A FAN</span>
-          <i class="fa-solid fa-arrow-right fc-arrow"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ICA CAREERS -->
+  <div class="ica-block">
+    <div class="ica-block-inner">
+
+      <div class="ica-left">
+        <div class="ica-top-row">
+          <div class="ica-badge-new"><span class="ica-text">ICA</span></div>
+          <span class="ica-tag-pill">Careers</span>
+        </div>
+        <h2 class="ica-headline-new">Build Your<br><span class="ica-hl-yellow">Future</span> Here</h2>
+        <p class="ica-desc">Join the team behind Nigeria's most loved brand. We're always looking for passionate people to grow with us.</p>
+        <ul class="ica-perks-new">
+          <li><i class="fa-solid fa-circle-check"></i> Competitive salary &amp; benefits</li>
+          <li><i class="fa-solid fa-circle-check"></i> Career growth &amp; training</li>
+          <li><i class="fa-solid fa-circle-check"></i> Inclusive work culture</li>
+          <li><i class="fa-solid fa-circle-check"></i> Pan-Nigeria opportunities</li>
+        </ul>
+        <a href="#" class="ica-cta-btn-new">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>EXPLORE CAREERS</span>
+          <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- Right: feature cards -->
-      <div class="fc-right">
-        <div class="fc-feature-card">
-          <div class="fc-feat-icon"><i class="fa-solid fa-gamepad"></i></div>
-          <div>
-            <h4>Games &amp; Challenges</h4>
-            <p>Win prizes playing fun Indomie-themed games every week.</p>
-          </div>
+      <div class="ica-right">
+        <div class="ica-stat-card">
+          <span class="ica-sc-num">500+</span>
+          <span class="ica-sc-label">Employees Nationwide</span>
         </div>
-        <div class="fc-feature-card">
-          <div class="fc-feat-icon"><i class="fa-solid fa-trophy"></i></div>
-          <div>
-            <h4>Exclusive Rewards</h4>
-            <p>Members-only discounts, merch drops, and surprise gifts.</p>
-          </div>
+        <div class="ica-stat-card ica-sc-red">
+          <span class="ica-sc-num">20+</span>
+          <span class="ica-sc-label">Departments</span>
         </div>
-        <div class="fc-feature-card">
-          <div class="fc-feat-icon"><i class="fa-solid fa-heart"></i></div>
-          <div>
-            <h4>Family Moments</h4>
-            <p>Share your Indomie moments and get featured on our page.</p>
-          </div>
+        <div class="ica-stat-card">
+          <span class="ica-sc-num">&#127881;</span>
+          <span class="ica-sc-label">Great Work Culture</span>
         </div>
-        <div class="fc-feature-card">
-          <div class="fc-feat-icon"><i class="fa-solid fa-star"></i></div>
-          <div>
-            <h4>Indomitables Club</h4>
-            <p>Top fans earn Indomitable status with special perks.</p>
-          </div>
+        <div class="ica-stat-card ica-sc-dark">
+          <i class="fa-solid fa-location-dot ica-sc-icon"></i>
+          <span class="ica-sc-label">Lagos &amp; Beyond</span>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ── ICA CAREERS — side-by-side below ── -->
+</section>
   <div class="ica-block">
     <div class="ica-block-inner">
 
