@@ -3247,3 +3247,85 @@ img, video {
   .ica-right { grid-template-columns: 1fr 1fr; gap: 10px; }
   .ica-sc-num { font-size: 28px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   FUN CLUB — ANIMATED CSS BACKGROUND (video fallback)
+   ═══════════════════════════════════════════════════════ */
+
+/* Animated background sits behind videos */
+.fc-animated-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(135deg, #1a0000 0%, #3d0000 30%, #cc0000 60%, #1a1a00 100%);
+  overflow: hidden;
+}
+
+/* Glowing orbs that drift slowly */
+.fc-bg-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.5;
+  animation: fcOrbDrift 12s ease-in-out infinite alternate;
+}
+.fc-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #cc0000, transparent);
+  top: -100px; left: -100px;
+  animation-duration: 14s;
+}
+.fc-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #ffd700, transparent);
+  bottom: -80px; right: -80px;
+  animation-duration: 10s; animation-delay: -5s;
+}
+.fc-orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #ff6600, transparent);
+  top: 40%; left: 40%;
+  animation-duration: 16s; animation-delay: -8s;
+}
+@keyframes fcOrbDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Subtle dot grid */
+.fc-bg-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: fcGridShift 20s linear infinite;
+}
+@keyframes fcGridShift {
+  from { background-position: 0 0; }
+  to   { background-position: 32px 32px; }
+}
+
+/* Floating family silhouettes */
+.fc-silhouette {
+  position: absolute;
+  font-size: 64px;
+  opacity: 0.06;
+  animation: fcSilFloat 8s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(1px);
+}
+.fs-1 { top: 8%;  left: 5%;  animation-delay: 0s;    font-size: 80px; }
+.fs-2 { top: 15%; right: 8%; animation-delay: 1.5s;  font-size: 56px; }
+.fs-3 { bottom: 20%; left: 12%; animation-delay: 3s; font-size: 72px; }
+.fs-4 { top: 50%; right: 5%;   animation-delay: 0.8s; font-size: 60px; }
+.fs-5 { bottom: 10%; right: 20%; animation-delay: 2s; font-size: 88px; }
+.fs-6 { top: 35%; left: 35%;   animation-delay: 4s;  font-size: 50px; }
+@keyframes fcSilFloat {
+  0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.06; }
+  50%      { transform: translateY(-16px) rotate(3deg); opacity: 0.1; }
+}
+
+/* Videos sit on top of animated bg */
+.fc-vid {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 1;
+  opacity: 0; transition: opacity 1s ease;
+}
+.fc-vid.fc-vid-active { opacity: 1; }

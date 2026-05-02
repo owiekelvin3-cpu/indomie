@@ -581,15 +581,31 @@
 
     <!-- Background video carousel â€” 3 African family videos -->
     <div class="fc-video-bg">
+      <!-- Local family videos â€” drop family-1.mp4, family-2.mp4, family-3.mp4 into /video folder -->
       <video class="fc-vid fc-vid-active" autoplay muted loop playsinline preload="auto" id="fc-vid-0">
-        <source src="https://videos.pexels.com/video-files/6646918/6646918-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="video/family-1.mp4" type="video/mp4">
       </video>
       <video class="fc-vid" muted loop playsinline preload="none" id="fc-vid-1">
-        <source src="https://videos.pexels.com/video-files/5063839/5063839-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="video/family-2.mp4" type="video/mp4">
       </video>
       <video class="fc-vid" muted loop playsinline preload="none" id="fc-vid-2">
-        <source src="https://videos.pexels.com/video-files/5063840/5063840-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="video/family-3.mp4" type="video/mp4">
       </video>
+
+      <!-- Animated CSS background â€” always visible, looks great even without videos -->
+      <div class="fc-animated-bg">
+        <div class="fc-bg-orb fc-orb-1"></div>
+        <div class="fc-bg-orb fc-orb-2"></div>
+        <div class="fc-bg-orb fc-orb-3"></div>
+        <div class="fc-bg-grid"></div>
+        <div class="fc-silhouette fs-1">&#128106;</div>
+        <div class="fc-silhouette fs-2">&#128102;</div>
+        <div class="fc-silhouette fs-3">&#128103;</div>
+        <div class="fc-silhouette fs-4">&#128105;</div>
+        <div class="fc-silhouette fs-5">&#128104;</div>
+        <div class="fc-silhouette fs-6">&#128106;</div>
+      </div>
+
       <!-- Dark gradient overlay -->
       <div class="fc-overlay"></div>
     </div>
