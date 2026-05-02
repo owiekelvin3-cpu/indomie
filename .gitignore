@@ -18,7 +18,6 @@ yarn-error.log*
 # Build outputs
 dist/
 build/
-public/
 .vercel/
 
 # Env files
