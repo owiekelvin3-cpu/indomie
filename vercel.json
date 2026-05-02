@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "buildCommand": "node build.js",
+  "outputDirectory": "public",
+  "installCommand": "echo 'no install needed'",
+  "framework": null,
   "headers": [
     {
       "source": "/video/(.*)",
