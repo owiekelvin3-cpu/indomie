@@ -369,6 +369,30 @@
     }
   });
 
+  // ── Fun Club video switcher ────────────────────────────────────
+  var fcVids    = document.querySelectorAll('.fc-vid');
+  var fcVdots   = document.querySelectorAll('.fc-vdot');
+  var fcCurrent = 0;
+
+  function fcGoTo(n) {
+    fcVids[fcCurrent].classList.remove('fc-vid-active');
+    fcVdots[fcCurrent].classList.remove('active');
+    if (fcVids[fcCurrent].id !== 'fc-vid-0') fcVids[fcCurrent].pause();
+    fcCurrent = (n + fcVids.length) % fcVids.length;
+    fcVids[fcCurrent].classList.add('fc-vid-active');
+    fcVdots[fcCurrent].classList.add('active');
+    fcVids[fcCurrent].play().catch(function(){});
+  }
+
+  fcVdots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      fcGoTo(parseInt(dot.dataset.fv));
+    });
+  });
+
+  // Auto-rotate every 8s
+  setInterval(function() { fcGoTo(fcCurrent + 1); }, 8000);
+
   // ── Product tabs ───────────────────────────────────────────────
   const ptabs   = document.querySelectorAll('.ptab');
   const ppanels = document.querySelectorAll('.product-panel');
