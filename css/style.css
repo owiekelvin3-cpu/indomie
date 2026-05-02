@@ -2085,6 +2085,12 @@ body.cursor-click .cursor-shadow {
   *, *::before, *::after { cursor: auto !important; }
 }
 
+/* Belt-and-suspenders: also hide on small screens regardless of hover capability */
+@media (max-width: 1024px) {
+  #indomie-cursor, #cursor-dot { display: none !important; }
+  *, *::before, *::after { cursor: auto !important; }
+}
+
 /* ═══════════════════════════════════════════════════════
    NAVBAR — BEAUTIFUL REDESIGN
    ═══════════════════════════════════════════════════════ */

@@ -3,48 +3,61 @@
   'use strict';
 
   // ══════════════════════════════════════════════
-  // CUSTOM CURSOR — Indomie Logo
+  // CUSTOM CURSOR — Indomie Logo (desktop only)
   // ══════════════════════════════════════════════
+
+  // Only run on devices that have a real pointer (not touch)
+  var hasPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+                   && window.innerWidth > 1024;
+
   var cursorEl  = document.getElementById('indomie-cursor');
   var cursorDot = document.getElementById('cursor-dot');
-  var curX = window.innerWidth / 2;
-  var curY = window.innerHeight / 2;
-  var dotX = curX, dotY = curY;
 
-  // Move cursor instantly to mouse position
-  document.addEventListener('mousemove', function(e) {
-    curX = e.clientX; curY = e.clientY;
-    if (cursorEl) {
-      cursorEl.style.left = curX + 'px';
-      cursorEl.style.top  = curY + 'px';
-    }
-  });
+  if (!hasPointer) {
+    // Hide elements and restore default cursor on touch/mobile
+    if (cursorEl)  cursorEl.style.display  = 'none';
+    if (cursorDot) cursorDot.style.display = 'none';
+    document.documentElement.style.setProperty('cursor', 'auto', 'important');
+  } else {
+    var curX = window.innerWidth / 2;
+    var curY = window.innerHeight / 2;
+    var dotX = curX, dotY = curY;
 
-  // Dot follows with slight lag via rAF
-  function animateDot() {
-    dotX += (curX - dotX) * 0.18;
-    dotY += (curY - dotY) * 0.18;
-    if (cursorDot) {
-      cursorDot.style.left = dotX + 'px';
-      cursorDot.style.top  = dotY + 'px';
+    // Move cursor instantly to mouse position
+    document.addEventListener('mousemove', function(e) {
+      curX = e.clientX; curY = e.clientY;
+      if (cursorEl) {
+        cursorEl.style.left = curX + 'px';
+        cursorEl.style.top  = curY + 'px';
+      }
+    });
+
+    // Dot follows with slight lag via rAF
+    function animateDot() {
+      dotX += (curX - dotX) * 0.18;
+      dotY += (curY - dotY) * 0.18;
+      if (cursorDot) {
+        cursorDot.style.left = dotX + 'px';
+        cursorDot.style.top  = dotY + 'px';
+      }
+      requestAnimationFrame(animateDot);
     }
-    requestAnimationFrame(animateDot);
+    animateDot();
+
+    // Hover state — logo lifts
+    document.querySelectorAll('a, button, [role="button"], .recipe-card, .club-card, .ag-item, .vs-thumb, .ptab').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { document.body.classList.add('cursor-hover'); });
+      el.addEventListener('mouseleave', function() { document.body.classList.remove('cursor-hover'); });
+    });
+
+    // Click state — logo squishes
+    document.addEventListener('mousedown', function() { document.body.classList.add('cursor-click'); });
+    document.addEventListener('mouseup',   function() { document.body.classList.remove('cursor-click'); });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', function() { if (cursorEl) cursorEl.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function() { if (cursorEl) cursorEl.style.opacity = '1'; });
   }
-  animateDot();
-
-  // Hover state — logo lifts
-  document.querySelectorAll('a, button, [role="button"], .recipe-card, .club-card, .ag-item, .vs-thumb, .ptab').forEach(function(el) {
-    el.addEventListener('mouseenter', function() { document.body.classList.add('cursor-hover'); });
-    el.addEventListener('mouseleave', function() { document.body.classList.remove('cursor-hover'); });
-  });
-
-  // Click state — logo squishes
-  document.addEventListener('mousedown', function() { document.body.classList.add('cursor-click'); });
-  document.addEventListener('mouseup',   function() { document.body.classList.remove('cursor-click'); });
-
-  // Hide cursor when leaving window
-  document.addEventListener('mouseleave', function() { if (cursorEl) cursorEl.style.opacity = '0'; });
-  document.addEventListener('mouseenter', function() { if (cursorEl) cursorEl.style.opacity = '1'; });
 
   // ══════════════════════════════════════════════
   // DARK MODE
