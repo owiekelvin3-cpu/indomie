@@ -24,23 +24,42 @@
 
   var body       = document.body;
 
+  /* ── HARD FALLBACK — show page even if GSAP never loads ── */
+  function showPageNow() {
+    if (intro)  { intro.style.display = 'none'; }
+    body.classList.remove('is-loading');
+    document.querySelectorAll('body > *:not(#page-intro):not(#page-outro)').forEach(function(el) {
+      el.style.visibility = 'visible';
+    });
+  }
+
+  // If page not shown within 4s, force-show it
+  var hardTimeout = setTimeout(showPageNow, 4000);
+
   /* ── ENTRANCE SEQUENCE ───────────────────────────────── */
+  var gsapRetries = 0;
   function runEntrance() {
-    // Make sure GSAP is ready
+    // Make sure GSAP is ready — max 40 retries (2s)
     if (typeof gsap === 'undefined') {
+      gsapRetries++;
+      if (gsapRetries > 40) {
+        // GSAP failed to load — show page immediately
+        clearTimeout(hardTimeout);
+        showPageNow();
+        return;
+      }
       setTimeout(runEntrance, 50);
       return;
     }
+    clearTimeout(hardTimeout); // GSAP loaded — cancel hard timeout
 
     var tl = gsap.timeline({
       onComplete: function () {
-        // Remove intro from DOM entirely after exit
         if (intro) {
           intro.style.display = 'none';
           intro.setAttribute('aria-hidden', 'true');
         }
-        body.classList.remove('is-loading');
-        // Trigger scroll animations now that content is visible
+        showPageNow();
         if (typeof ScrollTrigger !== 'undefined') {
           ScrollTrigger.refresh();
         }
