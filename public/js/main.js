@@ -1,4 +1,4 @@
-﻿/* ── INDOMIE NIGERIA — MAIN JS ── */
+/* ── INDOMIE NIGERIA — MAIN JS ── */
 (function () {
   'use strict';
 
@@ -503,3 +503,4 @@
   });
 
 })();
+ 

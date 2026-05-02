@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    INDOMIE NIGERIA — ENTRANCE & OUTRO ANIMATIONS
    Entrance : cinematic red curtain split + logo reveal
    Outro    : red panels close + logo flash on nav away
@@ -241,3 +241,4 @@
   }
 
 })();
+ 

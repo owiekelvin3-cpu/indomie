@@ -1,4 +1,4 @@
-﻿/* ── INDOMIE NIGERIA — ADVANCED SCROLL ANIMATIONS ── */
+/* ── INDOMIE NIGERIA — ADVANCED SCROLL ANIMATIONS ── */
 (function () {
   'use strict';
 
@@ -240,3 +240,4 @@
     initAnimations();
   }
 })();
+ 
